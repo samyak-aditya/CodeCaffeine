@@ -10,10 +10,5 @@ A brief description of what your project is about. Include key features or objec
 - [Contributing](#contributing)
 - [License](#license)
 
-## Installation
 
-### Steps
-1. Clone the repository:
-   ```sh
-  
 
