@@ -12,11 +12,6 @@ A brief description of what your project is about. Include key features or objec
 
 ## Installation
 
-### Prerequisites
-List any prerequisites that are needed before installing your project. For example:
-- Node.js version X.X.X
-- Python version X.X
-
 ### Steps
 1. Clone the repository:
    ```sh
