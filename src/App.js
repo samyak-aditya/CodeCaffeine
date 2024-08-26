@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import Contact from './Contact';
+import Home from './pages/Home';
+import About from './pages/About.js';
+//import Contact from './pages/Contact';
 import './App.css';
+import ThreeDCard from './components/DynamicCard';
 
 function App() {
   return (
@@ -18,9 +19,9 @@ function App() {
         </nav>
         
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<ThreeDCard />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </div>
     </Router>
