@@ -1,42 +1,43 @@
 import React, { Suspense } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
-import { OrbitControls, Text } from '@react-three/drei';
+import { OrbitControls, Text, Image } from '@react-three/drei';
 import { TextureLoader } from 'three';
-//import texture from '../textures/map.jpg'; // Path to your texture image
 
-const Card = () => {
-  //const colorMap = useLoader(TextureLoader, texture);
+const ThreeDCard = ({ heading, image }) => {
+  // Ensure the image is properly loaded
+  //const colorMap = useLoader(TextureLoader, image);
 
   return (
     <mesh rotation={[0, Math.PI / 4, 0]}>
-      <boxGeometry args={[3, 1.5, 0.1]} />
+      <boxGeometry args={[4, 5, 0.1]} />
       <meshStandardMaterial  />
-      <Text
+      <Image
+      src = {"https://cdn-icons-png.flaticon.com/512/17586/17586810.png"}
         position={[0, 0, 0.06]} // Slightly offset from the card surface
         fontSize={0.5}
         color="black"
         anchorX="center"
         anchorY="middle"
-      >
-        Your Text Here
-      </Text>
+      />
+       
+      
     </mesh>
   );
 };
 
-const App = () => {
+const ThreeDCardContainer = ({ link ,heading, image }) => {
   return (
     <div style={{ height: '500px' }}>
       <Canvas>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Card />
+        <Suspense fallback={null}>
+          <ThreeDCard heading={heading} image={image} />
           <ambientLight intensity={0.5} />
           <directionalLight position={[-2, 5, 2]} intensity={1} />
-          <OrbitControls enableZoom={true} />
+          <OrbitControls enableZoom={false} />
         </Suspense>
       </Canvas>
     </div>
   );
 };
 
-export default App;
+export default ThreeDCardContainer;
