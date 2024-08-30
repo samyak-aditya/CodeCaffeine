@@ -1,42 +1,39 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text } from '@react-three/drei';
+import React from 'react';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 
-const ThreeDCard = ({ heading }) => {
-
-  
+const DynamicCard = ({ heading, link, image }) => {
   return (
-    <mesh rotation={[0, Math.PI / 4, 0]}>
-      <boxGeometry args={[4, 5, 0.1]} />
-      <meshStandardMaterial color="lightgrey" /> {/* Default color without image */}
-      <Text
-        position={[0, 0, 0.15]} // Adjusted to offset more from the card surface
-        fontSize={0.5} // Increase font size if needed
-        color="black"
-        anchorX="center"
-        anchorY="middle"
-        maxWidth={4} // Optional: adjust to constrain text within card width
-      >
-        {heading || 'Default Heading'} {/* Fallback to a default heading if undefined */}
-      </Text>
-    </mesh>
+    <Card 
+      style={{ 
+        width: '300px', 
+        height: '400px', 
+        margin: '20px', 
+        borderRadius: '12px',
+        background: 'rgba(255, 255, 255, 0.1)', // Semi-transparent background
+        backdropFilter: 'blur(10px)', // Apply blur effect
+        border: '1px solid rgba(255, 255, 255, 0.2)', // Optional border for glass effect
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Optional shadow for depth
+        overflow: 'hidden' // Ensure content stays within rounded corners
+      }}
+    >
+      <a href={link} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
+        <CardMedia
+          component="img"
+          alt={heading}
+          image={image}
+          style={{ height: '150px', objectFit: 'cover' }}
+        />
+      </a>
+      <CardContent>
+        <Typography variant="h5" style={{ textAlign: 'center', margin: '10px 0' }}>
+          {heading}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" style={{ textAlign: 'center' }}>
+          This is some content inside the card.
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 
-const ThreeDCardContainer = ({ heading }) => {
-  console.log(heading);
-  return (
-    <div style={{ height: '500px', width: '100%' }}>
-      <Canvas>
-        <Suspense fallback={<div>Loading...</div>}> {/* Add visible fallback for debugging */}
-          <ThreeDCard heading={heading} />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[-2, 5, 2]} intensity={1} />
-          <OrbitControls enableZoom={false} />
-        </Suspense>
-      </Canvas>
-    </div>
-  );
-};
-
-export default ThreeDCardContainer;
+export default DynamicCard;

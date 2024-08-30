@@ -1,43 +1,57 @@
 import React from 'react';
-import ThreeDCardContainer from '../components/DynamicCard'; // Ensure correct import path
-import { Container, Grid } from '@mui/material';
+import DynamicCard from '../components/DynamicCard';
 
-const jsonData = [
-  {
-    heading: "First Card",
-    image: "https://cdn-icons-png.flaticon.com/512/17586/17586810.png",
-    link: "https://example.com/first",
-  },
-  {
-    heading: "Second Card",
-    image: "https://cdn-icons-png.flaticon.com/512/17586/17586810.png",
-    link: "https://example.com/second",
-  },
-  {
-    heading: "Third Card",
-    image: "https://cdn-icons-png.flaticon.com/512/17586/17586810.png",
-    link: "https://example.com/third",
-  },
-];
+const Home = () => {
+  console.log('Home component rendered');
 
-export const Home = () => {
+  const cardsData = [
+    {
+      heading: 'Heading 1',
+      link: 'https://example.com/1',
+      image: 'https://via.placeholder.com/300x150'
+    },
+    {
+      heading: 'Heading 2',
+      link: 'https://example.com/2',
+      image: 'https://via.placeholder.com/300x150'
+    },
+    {
+      heading: 'Heading 2',
+      link: 'https://example.com/2',
+      image: 'https://via.placeholder.com/300x150'
+    },
+    {
+      heading: 'Heading 2',
+      link: 'https://example.com/2',
+      image: 'https://via.placeholder.com/300x150'
+    },
+    {
+      heading: 'Heading 2',
+      link: 'https://example.com/2',
+      image: 'https://via.placeholder.com/300x150'
+    }
+    // Add more items as needed
+  ];
+
+  console.log(cardsData.length);
+
   return (
-    <Container>
-      <Grid container spacing={2}>
-        {jsonData.map((item, index) => {
-          console.log('Rendering Card:', item.heading); // Debug log
-          return (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <ThreeDCardContainer
-                heading={item.heading} // Pass heading correctly
-                link={item.link}
-                // The image prop is passed but can be ignored in ThreeDCardContainer
-              />
-            </Grid>
-          );
-        })}
-      </Grid>
-    </Container>
+    <div style={{ 
+      display: 'flex', 
+      flexWrap: 'wrap', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh'
+    }}>
+      {cardsData.map((card, index) => (
+        <DynamicCard 
+          key={index} // Use index as a key when data doesn't have a unique ID
+          heading={card.heading} 
+          link={card.link} 
+          image={card.image} 
+        />
+      ))}
+    </div>
   );
 };
 
