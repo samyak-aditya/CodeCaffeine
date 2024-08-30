@@ -2,6 +2,8 @@ import React from 'react';
 import DynamicCard from '../components/DynamicCard';
 
 const Home = () => {
+  console.log('Home component rendered');
+
   const cardsData = [
     {
       heading: 'Heading 1',
@@ -30,6 +32,8 @@ const Home = () => {
     }
     // Add more items as needed
   ];
+
+  console.log(cardsData.length);
 
   return (
     <div style={{ 
