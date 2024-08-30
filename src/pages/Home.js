@@ -1,44 +1,59 @@
-import React from 'react';
-import ThreeDCardContainer from '../components/DynamicCard'; // Ensure correct import path
-import { Container, Grid } from '@mui/material';
+import * as React from "react"
 
-const jsonData = [
-  {
-    heading: "First Card",
-    image: "https://cdn-icons-png.flaticon.com/512/17586/17586810.png",
-    link: "https://example.com/first",
-  },
-  {
-    heading: "Second Card",
-    image: "https://cdn-icons-png.flaticon.com/512/17586/17586810.png",
-    link: "https://example.com/second",
-  },
-  {
-    heading: "Third Card",
-    image: "https://cdn-icons-png.flaticon.com/512/17586/17586810.png",
-    link: "https://example.com/third",
-  },
-];
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
-export const Home = () => {
+export function CardWithForm() {
   return (
-    <Container>
-      <Grid container spacing={2}>
-        {jsonData.map((item, index) => {
-          console.log('Rendering Card:', item.heading); // Debug log
-          return (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <ThreeDCardContainer
-                heading={item.heading} // Pass heading correctly
-                link={item.link}
-                // The image prop is passed but can be ignored in ThreeDCardContainer
-              />
-            </Grid>
-          );
-        })}
-      </Grid>
-    </Container>
-  );
-};
-
-export default Home;
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Create project</CardTitle>
+        <CardDescription>Deploy your new project in one-click.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" placeholder="Name of your project" />
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="framework">Framework</Label>
+              <Select>
+                <SelectTrigger id="framework">
+                  <SelectValue placeholder="Select" />
+                </SelectTrigger>
+                <SelectContent position="popper">
+                  <SelectItem value="next">Next.js</SelectItem>
+                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
+                  <SelectItem value="astro">Astro</SelectItem>
+                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button variant="outline">Cancel</Button>
+        <Button>Deploy</Button>
+      </CardFooter>
+    </Card>
+  )
+}
