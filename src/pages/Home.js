@@ -1,5 +1,6 @@
 import React from 'react';
 import DynamicCard from '../components/DynamicCard';
+import ThreeDText from '../components/threeDtext';
 
 const Home = () => {
   console.log('Home component rendered');
@@ -43,6 +44,8 @@ const Home = () => {
       alignItems: 'center', 
       height: '100vh'
     }}>
+
+      <ThreeDText />
       {cardsData.map((card, index) => (
         <DynamicCard 
           key={index} // Use index as a key when data doesn't have a unique ID
