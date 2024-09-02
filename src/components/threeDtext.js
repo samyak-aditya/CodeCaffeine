@@ -10,10 +10,10 @@ const ThreeDText = () => {
       <directionalLight position={[5, 5, 5]} intensity={1} />
 
       {/* Suspense to handle loading */}
-      <Suspense fallback={<span>Loading...</span>}>
+      <Suspense fallback={<>Loading...</>}>
         {/* 3D Text */}
         <Text3D
-          font="/fonts/helvetiker_regular.typeface.json" // Correct path to the font file
+          
           size={1}
           height={0.5}
           curveSegments={32}
