@@ -10,7 +10,7 @@ const ThreeDText = () => {
       <directionalLight position={[5, 5, 5]} intensity={1} />
 
       {/* Suspense to handle loading */}
-      <Suspense fallback={<>Loading...</>}>
+      <Suspense fallback={<div>Loading...</div>}>
         {/* 3D Text */}
         <Text3D
           
