@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 const DynamicCard = ({ heading, link, image }) => {
   return (
