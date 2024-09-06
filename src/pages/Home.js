@@ -45,7 +45,7 @@ const Home = () => {
       height: '100vh'
     }}>
 
-      <ThreeDText />
+      {/* <ThreeDText /> */}
       {cardsData.map((card, index) => (
         <DynamicCard 
           key={index} // Use index as a key when data doesn't have a unique ID
